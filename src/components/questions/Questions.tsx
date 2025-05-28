@@ -9,12 +9,14 @@ const questionData = [
     question: 'Femmy ilovasi nima uchun mo‘ljallangan?',
     answer:
       'Albatta. Femmy sizning shaxsiy ma’lumotlaringizni himoyalaydi va uchinchi tomonlarga uzatilmaydi.',
+    isView: false,
   },
   {
     id: 2,
     question: 'Ilova faqat hayz sikliga mo‘ljallanganmi?',
     answer:
       'Femmy ilovasi foydalanuvchilarning shaxsiy ma’lumotlarini, menstruatsiya tsikli, ovulatsiya va boshqa sog‘liq bilan bog‘liq ma’lumotlarni to‘playdi.',
+    isView: false,
   },
 
   {
@@ -22,30 +24,35 @@ const questionData = [
     question: 'Ilova o‘zbek tilidami?',
     answer:
       'Ha, ilova o‘zbek tilida. Siz o‘zbek tilida ma’lumotlarni kiritishingiz va ilovaning barcha funksiyalaridan foydalanishingiz mumkin.',
+    isView: false,
   },
   {
     id: 4,
     question: 'Maʼlumotlarim xavfsiz saqlanadimi?',
     answer:
       'Femmy ilovasi foydalanuvchilarning shaxsiy ma’lumotlarini, menstruatsiya tsikli, ovulatsiya va boshqa sog‘liq bilan bog‘liq ma’lumotlarni to‘playdi.',
+    isView: false,
   },
   {
     id: 5,
     question: 'Ilovani telefonimda qanday o‘rnatsam bo‘ladi?',
     answer:
       'Femmy ilovasini telefoningizga o‘rnatish uchun App Store yoki Google Play do‘konidan ilovani qidirib toping va o‘rnatish tugmasini bosing. O‘rnatish jarayoni tugagach, ilovani oching va ro‘yxatdan o‘ting.',
+    isView: false,
   },
   {
     id: 6,
     question: 'Ilovada nechta rejim mavjud?',
     answer:
       'Femmy ilovasida bir nechta rejim mavjud: menstruatsiya tsikli, ovulatsiya, homiladorlik va boshqa sog‘liq bilan bog‘liq ma’lumotlarni kuzatish uchun. Siz o‘z ehtiyojlaringizga mos ravishda rejimlarni tanlashingiz mumkin.',
+    isView: false,
   },
   {
     id: 7,
     question: 'Femmy foydalanuvchiga qanday yordam beradi?',
     answer:
       'Femmy ilovasi foydalanuvchilarga menstruatsiya tsikli, ovulatsiya, homiladorlik va boshqa sog‘liq bilan bog‘liq ma’lumotlarni kuzatish va boshqarishda yordam beradi. Ilova foydalanuvchilarga o‘z sog‘lig‘ini yaxshilash va hayot sifatini oshirish uchun zarur bo‘lgan ma’lumotlarni taqdim etadi.',
+    isView: false,
   },
 ];
 
@@ -73,6 +80,15 @@ const Questions = () => {
   };
 
   const [showAnswer, setShowAnswer] = useState<number | null>(null);
+  const [questionArr, setQuestionArr] = useState(questionData);
+
+  const toggleView = (id: number) => {
+    setQuestionArr((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, isView: !item.isView } : item
+      )
+    );
+  };
 
   return (
     <section className="pt-[120px] md:pt-[160px] pb-[120px]">
@@ -82,16 +98,19 @@ const Questions = () => {
         </h2>
 
         <ul className="flex flex-col gap-y-4 sm:gap-y-6">
-          {questionData.map((item) => (
+          {questionArr.map((item) => (
             <li key={item.id} className="flex flex-col gap-y-3">
               <div className="flex items-center gap-x-[19px]">
-                <div className="py-4 px-5 bg-[var(--header-bg)] rounded-[32px] font-bold text-[18px] sm:text-[24px] leading-[24px] sm:leading-[32px] w-full sm:w-auto sm:min-w-[360px]">
+                <div className={`py-4 px-5 ${item.isView ? "bg-[#FFF1F3]": "bg-[var(--header-bg)]"} rounded-[32px] font-bold text-[18px] sm:text-[24px] leading-[24px] sm:leading-[32px] w-full sm:w-auto sm:min-w-[360px]`}>
                   {item.question}
                 </div>
                 <button
-                  onClick={() =>
-                    setShowAnswer(showAnswer === item.id ? null : item.id)
-                  }
+                  onClick={() => {
+                    setShowAnswer(showAnswer === item.id ? null : item.id);
+                    if(showAnswer == item.id) {
+                      toggleView(item.id);
+                    }
+                  }}
                   className={`${
                     showAnswer === item.id
                       ? 'bg-[var(--button-color)]'
