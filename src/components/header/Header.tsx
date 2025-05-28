@@ -38,10 +38,10 @@ const Header = () => {
     },
   };
 
-  const itemVariants = {
-    open: { opacity: 1, y: 0 },
-    closed: { opacity: 0, y: -10 },
-  };
+  // const itemVariants = {
+  //   open: { opacity: 1, y: 0 },
+  //   closed: { opacity: 0, y: -10 },
+  // };
 
   return (
     <>
@@ -149,7 +149,7 @@ const Header = () => {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }} // SEKIN YOPILISH UCHUN
+            transition={{ duration: 0.5, ease: 'easeInOut' }} 
             className="fixed h-full top-0 left-0 right-0 bg-[#FFE3E8] z-50 xs:hidden backdrop-blur-[48px] container"
           >
             <div className="flex justify-between pt-[24px]">
