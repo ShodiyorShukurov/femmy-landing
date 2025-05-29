@@ -10,7 +10,6 @@ const questionData = [
     answer:
       'Albatta. Femmy sizning shaxsiy ma’lumotlaringizni himoyalaydi va uchinchi tomonlarga uzatilmaydi.',
     isView: false,
-    isCount: 0,
   },
   {
     id: 2,
@@ -18,7 +17,6 @@ const questionData = [
     answer:
       'Femmy ilovasi foydalanuvchilarning shaxsiy ma’lumotlarini, menstruatsiya tsikli, ovulatsiya va boshqa sog‘liq bilan bog‘liq ma’lumotlarni to‘playdi.',
     isView: false,
-    isCount: 0,
   },
 
   {
@@ -27,7 +25,6 @@ const questionData = [
     answer:
       'Ha, ilova o‘zbek tilida. Siz o‘zbek tilida ma’lumotlarni kiritishingiz va ilovaning barcha funksiyalaridan foydalanishingiz mumkin.',
     isView: false,
-    isCount: 0,
   },
   {
     id: 4,
@@ -35,7 +32,6 @@ const questionData = [
     answer:
       'Femmy ilovasi foydalanuvchilarning shaxsiy ma’lumotlarini, menstruatsiya tsikli, ovulatsiya va boshqa sog‘liq bilan bog‘liq ma’lumotlarni to‘playdi.',
     isView: false,
-    isCount: 0,
   },
   {
     id: 5,
@@ -43,7 +39,6 @@ const questionData = [
     answer:
       'Femmy ilovasini telefoningizga o‘rnatish uchun App Store yoki Google Play do‘konidan ilovani qidirib toping va o‘rnatish tugmasini bosing. O‘rnatish jarayoni tugagach, ilovani oching va ro‘yxatdan o‘ting.',
     isView: false,
-    isCount: 0,
   },
   {
     id: 6,
@@ -51,7 +46,6 @@ const questionData = [
     answer:
       'Femmy ilovasida bir nechta rejim mavjud: menstruatsiya tsikli, ovulatsiya, homiladorlik va boshqa sog‘liq bilan bog‘liq ma’lumotlarni kuzatish uchun. Siz o‘z ehtiyojlaringizga mos ravishda rejimlarni tanlashingiz mumkin.',
     isView: false,
-    isCount: 0,
   },
   {
     id: 7,
@@ -59,7 +53,6 @@ const questionData = [
     answer:
       'Femmy ilovasi foydalanuvchilarga menstruatsiya tsikli, ovulatsiya, homiladorlik va boshqa sog‘liq bilan bog‘liq ma’lumotlarni kuzatish va boshqarishda yordam beradi. Ilova foydalanuvchilarga o‘z sog‘lig‘ini yaxshilash va hayot sifatini oshirish uchun zarur bo‘lgan ma’lumotlarni taqdim etadi.',
     isView: false,
-    isCount: 0,
   },
 ];
 
@@ -93,7 +86,7 @@ const Questions = () => {
     setQuestionArr((prev) =>
       prev.map((item) =>
         item.id === id && !item.isView
-          ? { ...item, isView: !item.isView}
+          ? { ...item, isView: !item.isView }
           : item
       )
     );
