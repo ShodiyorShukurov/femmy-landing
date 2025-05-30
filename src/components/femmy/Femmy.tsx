@@ -31,7 +31,7 @@ const Femmy = () => {
       );
 
       // Kartalar sarlavha bilan birga ko'rinishga keladi, lekin o'z joyida turadi
-      cardRefs.current.forEach((card, index) => {
+      cardRefs.current.forEach((card) => {
         if (card) {
           tl.fromTo(
             card,
