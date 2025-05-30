@@ -59,6 +59,7 @@ const Header = () => {
                 alt="Femmy Logo"
                 width={120}
                 height={35}
+                style={{ width: '120px', height: 'auto' }}
               />
             </Link>
 
@@ -74,9 +75,6 @@ const Header = () => {
                   <Link href="#">Foydalanish</Link>
                 </li>
                 <li>
-                  <Link href="#">Izohlar</Link>
-                </li>
-                <li>
                   <Link href="#">Savollar</Link>
                 </li>
               </ul>
@@ -88,7 +86,7 @@ const Header = () => {
                   className={`px-4 py-2  text-[16px] leading-[150%] font-bold ${
                     isLanguageOpen
                       ? 'bg-[var(--button-color)] text-[var(--button-text-color)]'
-                      : 'border border-button-color text-[var(--button-color)]'
+                      : 'border border-button-color text-[var(--button-color)] bg-[var(--header-bg)]'
                   }  rounded-[24px] cursor-pointer`}
                   onClick={() => setIsLanguageOpen(!isLanguageOpen)}
                   aria-label="Tilni o‘zgartirish"
@@ -110,7 +108,7 @@ const Header = () => {
                         <button
                           key={lang.code}
                           onClick={() => handleLanguageChange(lang.label)}
-                          className="px-4 py-2 text-[var(--button-color)] text-[16px] leading-[150%] font-bold border border-button-color rounded-[24px] cursor-pointer"
+                          className="px-4 py-2 text-[var(--button-color)] bg-[var(--header-bg)] text-[16px] leading-[150%] font-bold border border-button-color rounded-[24px] cursor-pointer"
                         >
                           {lang.label}
                         </button>
@@ -190,7 +188,7 @@ const Header = () => {
                           <button
                             key={lang.code}
                             onClick={() => handleLanguageChange(lang.label)}
-                            className="px-4 py-2 text-[var(--button-color)] text-[16px] leading-[150%] font-bold border border-button-color rounded-[24px] cursor-pointer"
+                            className="px-4 py-2 text-[var(--button-color)] bg-[var(--header-bg)] text-[16px] leading-[150%] font-bold border border-button-color rounded-[24px] cursor-pointer"
                           >
                             {lang.label}
                           </button>
@@ -224,9 +222,6 @@ const Header = () => {
                 </li>
                 <li>
                   <Link href="#">Foydalanish</Link>
-                </li>
-                <li>
-                  <Link href="#">Izohlar</Link>
                 </li>
                 <li>
                   <Link href="#">Savollar</Link>

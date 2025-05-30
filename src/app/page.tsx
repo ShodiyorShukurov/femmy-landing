@@ -2,6 +2,7 @@
 import Advertisement from '@/components/advertisement/Advertisement';
 import BackgroundImage from '@/components/backgroundImage/BackgroundImage';
 import CardInfo from '@/components/cardInfo/CardInfo';
+import Femmy from '@/components/femmy/Femmy';
 import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import Hero from '@/components/hero/Hero';
@@ -9,31 +10,47 @@ import Info from '@/components/info/Info';
 import Questions from '@/components/questions/Questions';
 import UsingApp from '@/components/usingApp/UsingApp';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Page = () => {
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [progress, setProgress] = React.useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    // Progressni 0 dan 90% gacha oshirib turadi
     let current = 0;
     const interval = setInterval(() => {
       current += 1;
-      setProgress(current);
-      if (current >= 100) {
-        clearInterval(interval);
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 100);
+      if (current < 90) {
+        setProgress(current);
       }
     }, 30);
 
-    return () => clearInterval(interval);
+    const handleLoad = () => {
+      clearInterval(interval);
+      
+      setProgress(100);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000); // biroz feyding ko‘rinishi uchun kechikish
+    };
+
+    // Faqat barcha rasm/style/script yuklangandan keyin
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
+    }
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('load', handleLoad);
+    };
   }, []);
 
   if (isLoading) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen px-4">
+      <div className="flex flex-col items-center justify-center h-screen px-4 bg-white">
         <Image
           src="/assets/logo/loaderLogo.svg"
           alt="Loading..."
@@ -63,6 +80,7 @@ const Page = () => {
       <main>
         <Hero />
         <BackgroundImage />
+        {/* <Femmy /> */}
         <CardInfo />
         <Info />
         <UsingApp />
