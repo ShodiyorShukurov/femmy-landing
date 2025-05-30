@@ -2,7 +2,7 @@
 import Advertisement from '@/components/advertisement/Advertisement';
 import BackgroundImage from '@/components/backgroundImage/BackgroundImage';
 import CardInfo from '@/components/cardInfo/CardInfo';
-import Femmy from '@/components/femmy/Femmy';
+// import Femmy from '@/components/femmy/Femmy';
 import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import Hero from '@/components/hero/Hero';

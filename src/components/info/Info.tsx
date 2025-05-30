@@ -49,7 +49,7 @@ const Info = () => {
       });
 
       // Step 3: Cardlar ketma-ket chiqadi
-      cardRefs.current.forEach((card, index) => {
+      cardRefs.current.forEach((card) => {
         if (card) {
           tl.fromTo(
             card,
