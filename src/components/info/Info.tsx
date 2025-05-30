@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,15 +70,17 @@ const Info = () => {
     return () => ctx.revert();
   }, []);
 
+  const {t}= useTranslation()
+
   return (
-    <section ref={sectionRef} className="relative h-screen bg-white overflow-hidden">
+    <section ref={sectionRef} className="relative h-screen overflow-hidden">
       <div className="container mx-auto flex flex-col items-center justify-center min-h-screen">
         {/* Sticky Title */}
         <h2
           ref={titleRef}
           className="text-[32px] sm:text-[48px] font-bold text-center mb-[32px]"
         >
-          Femmy kimlar uchun
+          {t('info.title')}
         </h2>
 
         {/* Cards */}
@@ -86,17 +89,17 @@ const Info = () => {
             {
               bg: '#FFE5F0',
               icon: '/assets/logo/girl-icon.svg',
-              text: 'Yosh qizlar',
+              text: t('info.text1'),
             },
             {
               bg: '#FFF3C7',
               icon: '/assets/logo/woman.svg',
-              text: 'Farzand rejalayotganlar',
+              text: t('info.text2'),
             },
             {
               bg: '#D9F1FF',
               icon: '/assets/logo/mother.svg',
-              text: 'Yangi onalar',
+              text: t('info.text3'),
             },
           ].map((item, index) => (
             <div

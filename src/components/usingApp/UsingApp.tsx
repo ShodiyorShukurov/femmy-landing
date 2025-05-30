@@ -1,42 +1,41 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const UsingApp = () => {
+  const { t } = useTranslation();
   const cardData = [
     {
       id: 1,
-      title: 'Femmy’ni App Store yoki Play Market’dan yuklab oling.',
-      description:
-        'Ilovani ochganingizdan so‘ng sizdan profil yaratish yoki anonim rejimda foydalanish taklif qilinadi. Foydalanuvchilar istasa, hech qanday ro‘yxatdan o‘tmasdan ham foydalanishni boshlashlari mumkin.',
+      title: t('use_app.card1_title'),
+      description: t('use_app.card1_text'),
       bg: '#FFE3EC',
-      descriptionList:[]
+      descriptionList: [],
     },
     {
       id: 2,
-      title: 'Oylik sikl, homiladorlik yoki onalik holatini tanlang.',
-      description:
-        'So’glig’ingizda oid ma’lumotlarni kiriting. Femmy ilovasi orqali o’zingizga mos rejimni tanlashingiz mumkin:',
+      title: t('use_app.card2_title'),
+      description: t('use_app.card2_text'),
       bg: '#F5E8FF',
       descriptionList: [
-        'Hayz kuzatuvi',
-        'Homiladorlik yo‘li',
-        'Onalikdan keyingi parvarish',
+        t('use_app.card2_text1'),
+        t('use_app.card2_text2'),
+        t('use_app.card2_text3'),
       ],
     },
     {
       id: 3,
-      title: 'Femmy siz uchun ishlaydi.',
-      description:
-        'Sizning tanlangan rejimingizga asoslanib ilova sog‘lig‘ingizni kuzatib boradi, tibbiy eslatmalar yuboradi va Ginekolog AI yordamida individual maslahatlar olishingiz mumkin. Har kuni Ginekolog AI orqali o’zingizda kuzatilayotgan muammolarga javob topishingiz mumkin.',
+      title: t('use_app.card3_title'),
+      description: t('use_app.card3_text'),
       bg: '#E6F9F1',
-      descriptionList:[]
+      descriptionList: [],
     },
   ];
 
   return (
-    <section className="pb-[120px] md:pb-[160px] ">
+    <section className="pb-[120px] md:pb-[160px] " id="using">
       <div className="container">
         <h2 className="text-[24px] sm:text-[48px] font-bold leading-[120%] text-center mb-6 md:mb-[32px]">
-          Ilovadan foydalanish
+          {t('use_app.title')}
         </h2>
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-4 sm:gap-6 rounded-[24px]">
@@ -52,15 +51,18 @@ const UsingApp = () => {
               <p className="text-[16px] leading-[150%] font-medium">
                 {card.description}
               </p>
-                {card.descriptionList.length > 0 && (
-                    <ul className="list-disc pl-6">
-                    {card.descriptionList.map((item, index) => (
-                        <li key={index} className="text-[16px] leading-[150%] font-medium">
-                        {item}
-                        </li>
-                    ))}
-                    </ul>
-                )}
+              {card.descriptionList.length > 0 && (
+                <ul className="list-disc pl-6">
+                  {card.descriptionList.map((item, index) => (
+                    <li
+                      key={index}
+                      className="text-[16px] leading-[150%] font-medium"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>

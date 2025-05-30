@@ -1,7 +1,11 @@
 import Image from 'next/image';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+
+  const {t}= useTranslation();
+
   return (
     <section className='pt-[100px] md:pt-[160px] pb-[64px] md:pb-[120px]'>
       <div className="container text-center">
@@ -34,9 +38,9 @@ const Hero = () => {
           />
 
           <h1 className="text-[48px] md:text-[64px] font-extrabold leading-[120%] w-full mt-[20px] xd:mt-0">
-            Femmy — AI Ginekolog
+            {t('hero.title')}
             <span className="block text-[24px] md:text-[48px] lg:text-[64px] leading-[100%] md:leading-[120%] font-semibold lg:font-extrabold">
-              Sog’lom ayollik uchun!
+              {t('hero.subtitle')}
             </span>
           </h1>
 
@@ -58,7 +62,9 @@ const Hero = () => {
               width={17}
               height={17}
             />
-            <span className="ml-2.5">Android uchun yuklab olish</span>
+            <span className="ml-2.5">
+              {t('hero.button_text1')}
+            </span>
           </button>
 
           <button className="px-6 py-4 sm:py-[18px] bg-[var(--button-color)] text-[var(--header-bg)] text-[16px] leading-[120%] font-bold rounded-[48px] flex items-center justify-center cursor-pointer w-full sm:w-auto">
@@ -68,7 +74,9 @@ const Hero = () => {
               width={17}
               height={17}
             />
-            <span className="ml-2.5">iOS uchun yuklab olish</span>
+            <span className="ml-2.5">
+              {t('hero.button_text2')}
+            </span>
           </button>
         </div>
       </div>

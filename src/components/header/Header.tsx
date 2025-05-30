@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
   const languageData = [
@@ -11,13 +12,16 @@ const Header = () => {
     { code: 'en', label: 'En' },
   ];
 
-  const [changeLanguage, setChangeLanguage] = useState('Uz');
+  const [changeLanguage, setChangeLanguage] = useState(
+    localStorage.getItem('selectedLanguage') || 'uz'
+  );
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLanguageChange = (code: string) => {
     setChangeLanguage(code);
     setIsLanguageOpen(false);
+    localStorage.setItem('selectedLanguage', code);
   };
 
   const dropdownVariants = {
@@ -38,19 +42,20 @@ const Header = () => {
     },
   };
 
-  // const itemVariants = {
-  //   open: { opacity: 1, y: 0 },
-  //   closed: { opacity: 0, y: -10 },
-  // };
+  const { t, i18n } = useTranslation();
+
+  const handleChangeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
 
   return (
     <>
       <header className="fixed top-[16px] sd:top-[24px] left-0 right-0 z-50 container">
-        <div className="bg-[#FFFFFF29] rounded-[32px] backdrop-blur-[24px]" 
-         style={{
-        boxShadow: "0px 4px 16px 0px rgba(0, 0, 0, 0.02)"
-
-      }}
+        <div
+          className="bg-[#FFFFFF29] rounded-[32px] backdrop-blur-[24px]"
+          style={{
+            boxShadow: '0px 4px 16px 0px rgba(0, 0, 0, 0.02)',
+          }}
         >
           <div className="flex justify-between items-center py-2 sm:py-[10px] px-4">
             <Link href="/">
@@ -66,16 +71,16 @@ const Header = () => {
             <nav className="hidden xs:block" aria-label="Main navigation">
               <ul className="flex items-center gap-x-6 text-[var(--secondary-text-color)] text-[16px] leading-[100%] font-semibold">
                 <li>
-                  <Link href="#">Ilova</Link>
+                  <Link href="#">{t('header.path1')}</Link>
                 </li>
                 <li>
-                  <Link href="#">Funksiyalar</Link>
+                  <Link href="#function">{t('header.path2')}</Link>
                 </li>
                 <li>
-                  <Link href="#">Foydalanish</Link>
+                  <Link href="#using">{t('header.path3')}</Link>
                 </li>
                 <li>
-                  <Link href="#">Savollar</Link>
+                  <Link href="#question">{t('header.path4')}</Link>
                 </li>
               </ul>
             </nav>
@@ -91,7 +96,8 @@ const Header = () => {
                   onClick={() => setIsLanguageOpen(!isLanguageOpen)}
                   aria-label="Tilni o‘zgartirish"
                 >
-                  {changeLanguage}
+                  {changeLanguage.slice(0, 1).toUpperCase() +
+                    changeLanguage.slice(1)}
                 </button>
                 {/* Language switcher button */}
                 <AnimatePresence>
@@ -107,7 +113,10 @@ const Header = () => {
                       {languageData.map((lang) => (
                         <button
                           key={lang.code}
-                          onClick={() => handleLanguageChange(lang.label)}
+                          onClick={() => {
+                            handleLanguageChange(lang.code);
+                            handleChangeLanguage(lang.code);
+                          }}
                           className="px-4 py-2 text-[var(--button-color)] bg-[var(--header-bg)] text-[16px] leading-[150%] font-bold border border-button-color rounded-[24px] cursor-pointer"
                         >
                           {lang.label}
@@ -119,7 +128,7 @@ const Header = () => {
               </div>
 
               <button className="px-4 py-2 text-[var(--button-text-color)] bg-[var(--button-color)] rounded-[24px] font-bold cursor-pointer">
-                Yuklab olish
+                <Link href="#download">{t('header.button_text')}</Link>
               </button>
             </div>
 
@@ -147,7 +156,7 @@ const Header = () => {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }} 
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
             className="fixed h-full top-0 left-0 right-0 bg-[#FFE3E8] z-50 xs:hidden backdrop-blur-[48px] container"
           >
             <div className="flex justify-between pt-[24px]">
@@ -171,7 +180,8 @@ const Header = () => {
                     onClick={() => setIsLanguageOpen(!isLanguageOpen)}
                     aria-label="Tilni o‘zgartirish"
                   >
-                    {changeLanguage}
+                    {changeLanguage.slice(0, 1).toUpperCase() +
+                      changeLanguage.slice(1)}
                   </button>
                   {/* Language switcher button */}
                   <AnimatePresence>
@@ -187,7 +197,10 @@ const Header = () => {
                         {languageData.map((lang) => (
                           <button
                             key={lang.code}
-                            onClick={() => handleLanguageChange(lang.label)}
+                            onClick={() => {
+                              handleLanguageChange(lang.code);
+                              handleChangeLanguage(lang.code);
+                            }}
                             className="px-4 py-2 text-[var(--button-color)] bg-[var(--header-bg)] text-[16px] leading-[150%] font-bold border border-button-color rounded-[24px] cursor-pointer"
                           >
                             {lang.label}

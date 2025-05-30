@@ -1,0 +1,79 @@
+{
+    "header": {
+        "path1": "App",
+        "path2": "Features",
+        "path3": "Usage",
+        "path4": "Questions",
+        "button_text": "Download"
+    },
+    "hero": {
+        "title": "Femmy — AI Gynecologist",
+        "subtitle": "For healthy femininity!",
+        "button_text1": "Download for Android",
+        "button_text2": "Download for iOS"
+    },
+    "card_info": {
+        "title": "Femmy App Features",
+        "card_title1": "Menstrual and Ovulation Tracker",
+        "card_title2": "Personal Reminders",
+        "card_title3": "Gynecologist AI",
+        "card_title4": "Privacy Mode",
+        "card_title5": "Pregnancy Mode",
+        "card_title6": "Useful Articles"
+    },
+    "info": {
+        "title": "Who is Femmy for",
+        "text1": "Young girls",
+        "text2": "Those planning to have children",
+        "text3": "New mothers"
+    },
+    "use_app": {
+        "title": "How to use the app",
+        "card1_title": "Download Femmy from the App Store or Play Market.",
+        "card1_text": "When you open the app, you'll be offered to create a profile or use it in anonymous mode. Users can start using the app without registering at all, if they prefer.",
+        "card2_title": "Select your cycle, pregnancy, or motherhood status.",
+        "card2_text": "Enter information about your health. With Femmy, you can choose the mode that suits you:",
+        "card2_text1": "Period tracking",
+        "card2_text2": "Pregnancy path",
+        "card2_text3": "Postpartum care",
+        "card3_title": "Femmy works for you.",
+        "card3_text": "Based on the mode you selected, the app monitors your health, sends medical reminders, and allows you to get personalized advice via Gynecologist AI. You can find answers to your concerns through Gynecologist AI every day."
+    },
+    "advertisement": {
+        "title": "1.5 thousand users and you",
+        "text": "Just a few seconds to get started",
+        "button_text1": "Download for iOS",
+        "button_text2": "Download for Android"
+    },
+    "questions": {
+        "title": "Frequently Asked Questions",
+        "question1": {
+            "title": "What is the Femmy app for?",
+            "text": "Femmy is an app designed to help women track their health. It includes a period tracker, ovulation monitoring, pregnancy mode, and helpful advice."
+        },
+        "question2": {
+            "title": "Is the app only for tracking periods?",
+            "text": "No, in addition to the period tracker, Femmy also supports pregnancy, postpartum care, and other health states."
+        },
+        "question3": {
+            "title": "Is the app available in Uzbek?",
+            "text": "Yes, the Femmy app is fully available in Uzbek. Articles, advice, and the interface are all in the Uzbek language."
+        },
+        "question4": {
+            "title": "Is my data stored securely?",
+            "text": "Absolutely. Femmy protects your personal data and does not share it with third parties."
+        },
+        "question5": {
+            "title": "How do I install the app on my phone?",
+            "text": "You can download Femmy from the App Store or Play Market — completely free of charge."
+        },
+        "question6": {
+            "title": "How many modes are available in the app?",
+            "text": "The Femmy app includes 3 main modes: period tracking, pregnancy, and postpartum mode. Each adapts to the user’s condition."
+        },
+        "question7": {
+            "title": "How does Femmy help users?",
+            "text": "The app collects health-related information, sends reminders, shares useful articles, and offers personalized advice."
+        }
+    }
+}

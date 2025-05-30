@@ -1,62 +1,12 @@
 'use client';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const questionData = [
-  {
-    id: 1,
-    question: 'Femmy ilovasi nima uchun mo‘ljallangan?',
-    answer:
-      'Albatta. Femmy sizning shaxsiy ma’lumotlaringizni himoyalaydi va uchinchi tomonlarga uzatilmaydi.',
-    isView: false,
-  },
-  {
-    id: 2,
-    question: 'Ilova faqat hayz sikliga mo‘ljallanganmi?',
-    answer:
-      'Femmy ilovasi foydalanuvchilarning shaxsiy ma’lumotlarini, menstruatsiya tsikli, ovulatsiya va boshqa sog‘liq bilan bog‘liq ma’lumotlarni to‘playdi.',
-    isView: false,
-  },
-
-  {
-    id: 3,
-    question: 'Ilova o‘zbek tilidami?',
-    answer:
-      'Ha, ilova o‘zbek tilida. Siz o‘zbek tilida ma’lumotlarni kiritishingiz va ilovaning barcha funksiyalaridan foydalanishingiz mumkin.',
-    isView: false,
-  },
-  {
-    id: 4,
-    question: 'Maʼlumotlarim xavfsiz saqlanadimi?',
-    answer:
-      'Femmy ilovasi foydalanuvchilarning shaxsiy ma’lumotlarini, menstruatsiya tsikli, ovulatsiya va boshqa sog‘liq bilan bog‘liq ma’lumotlarni to‘playdi.',
-    isView: false,
-  },
-  {
-    id: 5,
-    question: 'Ilovani telefonimda qanday o‘rnatsam bo‘ladi?',
-    answer:
-      'Femmy ilovasini telefoningizga o‘rnatish uchun App Store yoki Google Play do‘konidan ilovani qidirib toping va o‘rnatish tugmasini bosing. O‘rnatish jarayoni tugagach, ilovani oching va ro‘yxatdan o‘ting.',
-    isView: false,
-  },
-  {
-    id: 6,
-    question: 'Ilovada nechta rejim mavjud?',
-    answer:
-      'Femmy ilovasida bir nechta rejim mavjud: menstruatsiya tsikli, ovulatsiya, homiladorlik va boshqa sog‘liq bilan bog‘liq ma’lumotlarni kuzatish uchun. Siz o‘z ehtiyojlaringizga mos ravishda rejimlarni tanlashingiz mumkin.',
-    isView: false,
-  },
-  {
-    id: 7,
-    question: 'Femmy foydalanuvchiga qanday yordam beradi?',
-    answer:
-      'Femmy ilovasi foydalanuvchilarga menstruatsiya tsikli, ovulatsiya, homiladorlik va boshqa sog‘liq bilan bog‘liq ma’lumotlarni kuzatish va boshqarishda yordam beradi. Ilova foydalanuvchilarga o‘z sog‘lig‘ini yaxshilash va hayot sifatini oshirish uchun zarur bo‘lgan ma’lumotlarni taqdim etadi.',
-    isView: false,
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 const Questions = () => {
+  const { t } = useTranslation();
+
   const messageVariants = {
     hidden: { opacity: 0, y: 20, scale: 0.95 },
     visible: {
@@ -79,8 +29,58 @@ const Questions = () => {
     },
   };
 
+  const questionData = [
+    {
+      id: 1,
+      question: t('questions.question1.title'),
+      answer: t('questions.question1.text'),
+      isView: false,
+    },
+    {
+      id: 2,
+      question: t('questions.question2.title'),
+      answer: t('questions.question2.text'),
+      isView: false,
+    },
+
+    {
+      id: 3,
+      question: t('questions.question3.title'),
+      answer: t('questions.question3.text'),
+      isView: false,
+    },
+    {
+      id: 4,
+      question: t('questions.question4.title'),
+      answer: t('questions.question4.text'),
+      isView: false,
+    },
+    {
+      id: 5,
+      question: t('questions.question5.title'),
+      answer: t('questions.question5.text'),
+      isView: false,
+    },
+    {
+      id: 6,
+      question: t('questions.question6.title'),
+      answer: t('questions.question6.text'),
+      isView: false,
+    },
+    {
+      id: 7,
+      question: t('questions.question7.title'),
+      answer: t('questions.question7.text'),
+      isView: false,
+    },
+  ];
+
   const [showAnswer, setShowAnswer] = useState<number | null>(null);
   const [questionArr, setQuestionArr] = useState(questionData);
+
+  useEffect(() => {
+    setQuestionArr(questionData);
+  }, [t]);
 
   const toggleView = (id: number) => {
     setQuestionArr((prev) =>
@@ -93,10 +93,10 @@ const Questions = () => {
   };
 
   return (
-    <section className="pt-[120px] md:pt-[160px] pb-[120px]">
+    <section className="pt-[120px] md:pt-[160px] pb-[120px]" id="question">
       <div className="container">
         <h2 className="text-[40px] sm:text-[64px] leading-[120%] font-bold sm:font-extrabold mb-8 sm:mb-12 sm:text-center">
-          Eng ko’p berilgan savollar
+          {t('questions.title')}
         </h2>
 
         <ul className="flex flex-col gap-y-4 sm:gap-y-6">

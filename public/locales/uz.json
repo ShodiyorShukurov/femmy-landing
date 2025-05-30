@@ -1,0 +1,79 @@
+{
+    "header": {
+        "path1": "Ilova",
+        "path2": "Funksiyalar",
+        "path3": "Foydalanish",
+        "path4": "Savollar",
+        "button_text": "Yuklab olish"
+    },
+    "hero": {
+        "title": "Femmy — AI Ginekolog",
+        "subtitle": "Sog’lom ayollik uchun!",
+        "button_text1": "Android uchun yuklab olish",
+        "button_text2": "iOS uchun yuklab olish"
+    },
+    "card_info": {
+        "title": "Femmy ilovasi Funksiyalari",
+        "card_title1": "Hayz va ovulyatsiya trekeri",
+        "card_title2": "Shaxsiy eslatmalar",
+        "card_title3": "Ginekolog Ai",
+        "card_title4": "Maxfiy rejim",
+        "card_title5": "Homiladorlik rejimi",
+        "card_title6": "Foydali maqolalar"
+    },
+    "info": {
+        "title": "Femmy kimlar uchun",
+        "text1": "Yosh qizlar",
+        "text2": "Farzand rejalayotganlar",
+        "text3": "Yangi onalar"
+    },
+    "use_app": {
+        "title": "Ilovadan foydalanish",
+        "card1_title": "Femmy’ni App Store yoki Play Market’dan yuklab oling.",
+        "card1_text": "Ilovani ochganingizdan so‘ng sizdan profil yaratish yoki anonim rejimda foydalanish taklif qilinadi. Foydalanuvchilar istasa, hech qanday ro‘yxatdan o‘tmasdan ham foydalanishni boshlashlari mumkin.",
+        "card2_title": "Oylik sikl, homiladorlik yoki onalik holatini tanlang.",
+        "card2_text": "So’glig’ingizda oid ma’lumotlarni kiriting. Femmy ilovasi orqali o’zingizga mos rejimni tanlashingiz mumkin:",
+        "card2_text1": "Hayz kuzatuvi",
+        "card2_text2": "Homiladorlik yo‘li",
+        "card2_text3": "Onalikdan keyingi parvarish",
+        "card3_title": "Femmy siz uchun ishlaydi.",
+        "card3_text": "Sizning tanlangan rejimingizga asoslanib ilova sog‘lig‘ingizni kuzatib boradi, tibbiy eslatmalar yuboradi va Ginekolog AI yordamida individual maslahatlar olishingiz mumkin. Har kuni Ginekolog AI orqali o’zingizda kuzatilayotgan muammolarga javob topishingiz mumkin."
+    },
+    "advertisement": {
+        "title": "1,5 ming foydalanuvchilar hamda Siz",
+        "text": "Boshlash uchun bir necha soniya kifoya",
+        "button_text1": "iOS uchun yuklab olish",
+        "button_text2": "Android uchun yuklab olish"
+    },
+    "questions": {
+        "title": "Eng ko’p berilgan savollar",
+        "question1": {
+            "title": "Femmy ilovasi nima uchun mo‘ljallangan?",
+            "text": "Femmy — ayollar salomatligini nazorat qilish uchun yaratilgan ilova. Unda hayz trekeri, ovulyatsiya kuzatuvi, homiladorlik rejimi va foydali maslahatlar mavjud."
+        },
+        "question2": {
+            "title": "Ilova faqat hayz sikliga mo‘ljallanganmi?",
+            "text": "Yo‘q, Femmy hayz trekeridan tashqari homiladorlik davri, tug‘ruqdan keyingi parvarish va boshqa sog‘liq holatlarini ham qamrab oladi."
+        },
+        "question3": {
+            "title": "Ilova o‘zbek tilidami?",
+            "text": "Ha, Femmy ilovasi to‘liq o‘zbek tilida ishlaydi. Maqolalar, maslahatlar va interfeys sizga tushunarli bo‘ladi."
+        },
+        "question4": {
+            "title": "Maʼlumotlarim xavfsiz saqlanadimi?",
+            "text": "Albatta. Femmy sizning shaxsiy ma’lumotlaringizni himoyalaydi va uchinchi tomonlarga uzatilmaydi."
+        },
+        "question5": {
+            "title": "Ilovani telefonimda qanday o‘rnatsam bo‘ladi?",
+            "text": "Femmy ilovasini App Store yoki Play Market’dan yuklab olishingiz mumkin — mutlaqo bepul."
+        },
+        "question6": {
+            "title": "Ilovada nechta rejim mavjud?",
+            "text": "Femmy ilovasida 3 asosiy rejim mavjud: hayz kuzatuvi, homiladorlik va tug‘ruqdan keyingi rejim. Har biri foydalanuvchining holatiga moslashadi."
+        },
+        "question7": {
+            "title": "Femmy foydalanuvchiga qanday yordam beradi?",
+            "text": "Ilova sizning sog‘lig‘ingizga oid ma’lumotlarni to‘playdi, sizga eslatmalar, foydali maqolalar va shaxsiylashtirilgan maslahatlar beradi."
+        }
+    }
+}

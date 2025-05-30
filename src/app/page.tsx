@@ -11,6 +11,8 @@ import Questions from '@/components/questions/Questions';
 import UsingApp from '@/components/usingApp/UsingApp';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
+import i18n from '@/i18n/i18n'; // i18n konfiguratsiyangizni import qiling
+import { I18nextProvider } from 'react-i18next';
 
 const Page = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -57,6 +59,7 @@ const Page = () => {
           width={260}
           height={190}
           className="w-[160px] sm:w-[260px] h-[110px] sm:h-[190px] object-contain"
+          priority={false}
         />
         <div className="w-full max-w-md mt-6">
           <div className="flex justify-between mb-2 text-[16px] leading-[24px] text-[#3D3D3D]">
@@ -75,7 +78,7 @@ const Page = () => {
   }
 
   return (
-    <>
+    <I18nextProvider i18n={i18n}>
       <Header />
       <main>
         <Hero />
@@ -88,7 +91,7 @@ const Page = () => {
         <Questions />
       </main>
       <Footer />
-    </>
+    </I18nextProvider>
   );
 };
 
