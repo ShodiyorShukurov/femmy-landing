@@ -69,7 +69,7 @@ const CardInfo = () => {
                 alt="Shaxsiy maslahatlar"
                 width={195}
                 height={120}
-                className="w-full max-w-[180px] sm:w-[195px] h-full max-h-[110px] sm:max-h-[120px] mt-[5px] rounded-[16px] mx-auto"
+                className="w-[180px]  sm:w-[195px] h-full max-h-[110px] sm:max-h-[120px] mt-[5px] rounded-[16px] mx-auto"
               />
             </li>
           </ul>
