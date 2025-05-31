@@ -1,13 +1,10 @@
-// src/components/Header.tsx
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState, useEffect, useMemo } from 'react'; // useMemo qo'shildi
+import React, { useState, useEffect } from 'react'; 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
-// languageData ni komponentdan tashqariga chiqaramiz
-// Bu uni har renderda qayta yaratilishining oldini oladi
 const ALL_LANGUAGES = [
   { code: 'uz', label: 'Uz' },
   { code: 'ru', label: 'Ru' },
@@ -17,9 +14,6 @@ const ALL_LANGUAGES = [
 const Header = () => {
   const { t, i18n } = useTranslation();
 
-  // Joriy tilning labelini saqlash uchun holat
-  // Boshlang'ich holatni i18n.language dan olishga harakat qilamiz
-  // Agar i18n.language mavjud bo'lmasa, 'Uz' ni default qilib qo'yamiz
   const [currentLanguageLabel, setCurrentLanguageLabel] = useState(() => {
     if (typeof window !== 'undefined' && i18n.language) {
       return ALL_LANGUAGES.find(lang => lang.code === i18n.language)?.label || 'Uz';
@@ -30,20 +24,17 @@ const Header = () => {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Bu useEffect faqat i18n.language o'zgarganda ishlaydi
   useEffect(() => {
     const label = ALL_LANGUAGES.find(lang => lang.code === i18n.language)?.label || 'Uz';
-    if (currentLanguageLabel !== label) { // Faqat agar label o'zgargan bo'lsa yangila
+    if (currentLanguageLabel !== label) {
       setCurrentLanguageLabel(label);
     }
-  }, [i18n.language, currentLanguageLabel]); // currentLanguageLabel ni ham dependency ga qo'shish shart
+  }, [i18n.language, currentLanguageLabel]); 
 
-  // Tilni almashtirish funksiyasi
   const handleLanguageSelect = (code: string) => {
-    setIsLanguageOpen(false); // Dropdownni yopish
-    localStorage.setItem('selectedLanguage', code); // Tilni localStorage ga saqlash
-    i18n.changeLanguage(code); // i18next tilini o'zgartirish
-    // setCurrentLanguageLabel yuqoridagi useEffect orqali avtomatik yangilanadi
+    setIsLanguageOpen(false); 
+    localStorage.setItem('selectedLanguage', code); 
+    i18n.changeLanguage(code); 
   };
 
   const dropdownVariants = {
@@ -124,7 +115,7 @@ const Header = () => {
                       exit="closed"
                       className="absolute top-[50px] right-0 mt-2 flex flex-col gap-y-[6px] z-50"
                     >
-                      {ALL_LANGUAGES.map((lang) => ( // ALL_LANGUAGES dan foydalanamiz
+                      {ALL_LANGUAGES.map((lang) => (
                         <button
                           key={lang.code}
                           onClick={() => handleLanguageSelect(lang.code)}
