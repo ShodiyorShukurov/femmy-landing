@@ -10,6 +10,7 @@
 }
 
 @theme{
+  --breakpoint-xxl:1200px;
   --breakpoint-xs: 850px;
   --breakpoint-xd: 900px;
   --breakpoint-sd: 600px;

@@ -4,37 +4,30 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
 
-// localStorage dan tilni yuklash funksiyasini ajratib olamiz
-const getInitialLanguage = () => {
-  if (typeof window !== 'undefined') { // Faqatgina brauzer muhitida ishlasin
-    return localStorage.getItem('selectedLanguage');
-  }
-  return null; // Server muhitida null qaytaramiz
-};
-
 i18n
   .use(Backend)
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    // Initial tilni getInitialLanguage funksiyasidan olamiz
-    // Agar getInitialLanguage null qaytarsa (ya'ni serverda bo'lsa), 'en' ni ishlatamiz
-    fallbackLng: getInitialLanguage() || 'en',
-    // debug: process.env.NODE_ENV === 'development'
-    backend: {
-      loadPath: '/locales/{{lng}}.json',
-    },
-
+    // Agar detektor tilni topa olmasa, 'uz' ga qaytsin
+    fallbackLng: 'uz', 
+    
+    // Brauzer tili detektorining tartibi va keshini sozlaymiz
     detection: {
       order: [
+        'localStorage', // Birinchi localStorage ni tekshirsin
         'cookie',
-        'localStorage', // LanguageDetector tomonidan ishlatiladi, u xavfsiz tarzda foydalanadi
         'navigator',
         'htmlTag',
         'path',
         'subdomain',
       ],
-      caches: ['cookie'], // Agar foydalanuvchi tilni o'zgartirsa, uni cookie'da saqlash tavsiya etiladi
+      caches: ['localStorage'], // Tanlangan tilni localStorage da saqlasin
+      lookupLocalStorage: 'selectedLanguage', // localStorage da qaysi kalitni qidirish
+    },
+
+    backend: {
+      loadPath: '/locales/{{lng}}.json',
     },
 
     interpolation: {
@@ -42,6 +35,7 @@ i18n
     },
     supportedLngs: ['en', 'ru', 'uz'],
     nonExplicitSupportedLngs: true,
+    // debug: process.env.NODE_ENV === 'development',
   });
 
 export default i18n;

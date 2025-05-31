@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     images: ['https://femmy.uz/assets/logo/femmyLogo.png'],
   },
   icons: {
-    icon: '/assets/logo/femmyLogo.png',
+    icon: '/assets/logo/loaderLogo.svg',
     shortcut: '/assets/logo/femmyLogo.png',
     apple: '/assets/logo/femmyLogo.png',
   },

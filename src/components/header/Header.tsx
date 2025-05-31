@@ -1,27 +1,49 @@
+// src/components/Header.tsx
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react'; // useMemo qo'shildi
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
-const Header = () => {
-  const languageData = [
-    { code: 'uz', label: 'Uz' },
-    { code: 'ru', label: 'Ru' },
-    { code: 'en', label: 'En' },
-  ];
+// languageData ni komponentdan tashqariga chiqaramiz
+// Bu uni har renderda qayta yaratilishining oldini oladi
+const ALL_LANGUAGES = [
+  { code: 'uz', label: 'Uz' },
+  { code: 'ru', label: 'Ru' },
+  { code: 'en', label: 'En' },
+];
 
-  const [changeLanguage, setChangeLanguage] = useState(
-    localStorage.getItem('selectedLanguage') || 'uz'
-  );
+const Header = () => {
+  const { t, i18n } = useTranslation();
+
+  // Joriy tilning labelini saqlash uchun holat
+  // Boshlang'ich holatni i18n.language dan olishga harakat qilamiz
+  // Agar i18n.language mavjud bo'lmasa, 'Uz' ni default qilib qo'yamiz
+  const [currentLanguageLabel, setCurrentLanguageLabel] = useState(() => {
+    if (typeof window !== 'undefined' && i18n.language) {
+      return ALL_LANGUAGES.find(lang => lang.code === i18n.language)?.label || 'Uz';
+    }
+    return 'Uz';
+  });
+
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleLanguageChange = (code: string) => {
-    setChangeLanguage(code);
-    setIsLanguageOpen(false);
-    localStorage.setItem('selectedLanguage', code);
+  // Bu useEffect faqat i18n.language o'zgarganda ishlaydi
+  useEffect(() => {
+    const label = ALL_LANGUAGES.find(lang => lang.code === i18n.language)?.label || 'Uz';
+    if (currentLanguageLabel !== label) { // Faqat agar label o'zgargan bo'lsa yangila
+      setCurrentLanguageLabel(label);
+    }
+  }, [i18n.language, currentLanguageLabel]); // currentLanguageLabel ni ham dependency ga qo'shish shart
+
+  // Tilni almashtirish funksiyasi
+  const handleLanguageSelect = (code: string) => {
+    setIsLanguageOpen(false); // Dropdownni yopish
+    localStorage.setItem('selectedLanguage', code); // Tilni localStorage ga saqlash
+    i18n.changeLanguage(code); // i18next tilini o'zgartirish
+    // setCurrentLanguageLabel yuqoridagi useEffect orqali avtomatik yangilanadi
   };
 
   const dropdownVariants = {
@@ -40,12 +62,6 @@ const Header = () => {
         staggerDirection: -1,
       },
     },
-  };
-
-  const { t, i18n } = useTranslation();
-
-  const handleChangeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
   };
 
   return (
@@ -88,18 +104,16 @@ const Header = () => {
             <div className="hidden xs:flex items-center gap-x-4">
               <div className="relative">
                 <button
-                  className={`px-4 py-2  text-[16px] leading-[150%] font-bold ${
+                  className={`px-4 py-2 text-[16px] leading-[150%] font-bold ${
                     isLanguageOpen
                       ? 'bg-[var(--button-color)] text-[var(--button-text-color)]'
                       : 'border border-button-color text-[var(--button-color)] bg-[var(--header-bg)]'
-                  }  rounded-[24px] cursor-pointer`}
+                  } rounded-[24px] cursor-pointer`}
                   onClick={() => setIsLanguageOpen(!isLanguageOpen)}
                   aria-label="Tilni o‘zgartirish"
                 >
-                  {changeLanguage.slice(0, 1).toUpperCase() +
-                    changeLanguage.slice(1)}
+                  {currentLanguageLabel}
                 </button>
-                {/* Language switcher button */}
                 <AnimatePresence>
                   {isLanguageOpen && (
                     <motion.div
@@ -110,13 +124,10 @@ const Header = () => {
                       exit="closed"
                       className="absolute top-[50px] right-0 mt-2 flex flex-col gap-y-[6px] z-50"
                     >
-                      {languageData.map((lang) => (
+                      {ALL_LANGUAGES.map((lang) => ( // ALL_LANGUAGES dan foydalanamiz
                         <button
                           key={lang.code}
-                          onClick={() => {
-                            handleLanguageChange(lang.code);
-                            handleChangeLanguage(lang.code);
-                          }}
+                          onClick={() => handleLanguageSelect(lang.code)}
                           className="px-4 py-2 text-[var(--button-color)] bg-[var(--header-bg)] text-[16px] leading-[150%] font-bold border border-button-color rounded-[24px] cursor-pointer"
                         >
                           {lang.label}
@@ -172,18 +183,16 @@ const Header = () => {
               <div className="flex items-center gap-x-4">
                 <div className="relative">
                   <button
-                    className={`px-4 py-2  text-[16px] leading-[150%] font-bold ${
+                    className={`px-4 py-2 text-[16px] leading-[150%] font-bold ${
                       isLanguageOpen
                         ? 'bg-[var(--button-color)] text-[var(--button-text-color)]'
                         : 'bg-[var(--header-bg)] border border-button-color text-[var(--button-color)]'
-                    }  rounded-[24px] cursor-pointer`}
+                    } rounded-[24px] cursor-pointer`}
                     onClick={() => setIsLanguageOpen(!isLanguageOpen)}
                     aria-label="Tilni o‘zgartirish"
                   >
-                    {changeLanguage.slice(0, 1).toUpperCase() +
-                      changeLanguage.slice(1)}
+                    {currentLanguageLabel}
                   </button>
-                  {/* Language switcher button */}
                   <AnimatePresence>
                     {isLanguageOpen && (
                       <motion.div
@@ -194,13 +203,10 @@ const Header = () => {
                         exit="closed"
                         className="absolute top-[50px] right-0 mt-2 flex flex-col gap-y-[6px] z-50"
                       >
-                        {languageData.map((lang) => (
+                        {ALL_LANGUAGES.map((lang) => ( // ALL_LANGUAGES dan foydalanamiz
                           <button
                             key={lang.code}
-                            onClick={() => {
-                              handleLanguageChange(lang.code);
-                              handleChangeLanguage(lang.code);
-                            }}
+                            onClick={() => handleLanguageSelect(lang.code)}
                             className="px-4 py-2 text-[var(--button-color)] bg-[var(--header-bg)] text-[16px] leading-[150%] font-bold border border-button-color rounded-[24px] cursor-pointer"
                           >
                             {lang.label}
@@ -228,16 +234,24 @@ const Header = () => {
             <div className="flex flex-col justify-center items-center h-full gap-y-8">
               <ul className="flex flex-col justify-center items-center gap-y-6 text-[24px] leading-[100%] font-semibold text-[var(--secondary-text-color)]">
                 <li>
-                  <Link href="#">Ilova</Link>
+                  <Link href="#">
+                  {t('header.path1')}
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#">Funksiyalar</Link>
+                  <Link href="#">
+                  {t('header.path2')}
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#">Foydalanish</Link>
+                  <Link href="#">
+                  {t('header.path3')}
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#">Savollar</Link>
+                  <Link href="#">
+                  {t('header.path4')}
+                  </Link>
                 </li>
               </ul>
 

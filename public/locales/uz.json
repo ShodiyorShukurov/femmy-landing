@@ -75,5 +75,14 @@
             "title": "Femmy foydalanuvchiga qanday yordam beradi?",
             "text": "Ilova sizning sog‘lig‘ingizga oid ma’lumotlarni to‘playdi, sizga eslatmalar, foydali maqolalar va shaxsiylashtirilgan maslahatlar beradi."
         }
+    },
+    "femmy":{
+        "title":"Femmy siz uchun nimalar qiladi?",
+        "card1_title": "Hayz va ovulyatsiya trekeri",
+        "card2_title": "Foydali maqolalar",
+        "card3_title": "Homiladolik rejimi",
+        "card4_title": "Foydalanuvchi maxfiyligi",
+        "card5_title": "Shaxsiy eslatmalar"
+
     }
 }

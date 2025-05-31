@@ -2,7 +2,7 @@
 import Advertisement from '@/components/advertisement/Advertisement';
 import BackgroundImage from '@/components/backgroundImage/BackgroundImage';
 import CardInfo from '@/components/cardInfo/CardInfo';
-// import Femmy from '@/components/femmy/Femmy';
+import Femmy from '@/components/femmy/Femmy';
 import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import Hero from '@/components/hero/Hero';
@@ -11,7 +11,7 @@ import Questions from '@/components/questions/Questions';
 import UsingApp from '@/components/usingApp/UsingApp';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import i18n from '@/i18n/i18n'; // i18n konfiguratsiyangizni import qiling
+import i18n from '@/i18n/i18n'; 
 import { I18nextProvider } from 'react-i18next';
 
 const Page = () => {
@@ -19,7 +19,6 @@ const Page = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Progressni 0 dan 90% gacha oshirib turadi
     let current = 0;
     const interval = setInterval(() => {
       current += 1;
@@ -34,7 +33,7 @@ const Page = () => {
       setProgress(100);
       setTimeout(() => {
         setIsLoading(false);
-      }, 1000); // biroz feyding ko‘rinishi uchun kechikish
+      }, 1000); 
     };
 
     // Faqat barcha rasm/style/script yuklangandan keyin
@@ -83,7 +82,7 @@ const Page = () => {
       <main>
         <Hero />
         <BackgroundImage />
-        {/* <Femmy /> */}
+        <Femmy />
         <CardInfo />
         <Info />
         <UsingApp />
