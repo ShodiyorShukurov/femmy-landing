@@ -212,7 +212,7 @@ const Femmy = () => {
           ref={titleRef}
           className="text-[40px] leading-[120%] font-extrabold text-center text-[var(--button-color)] w-full max-w-[343px] md:max-w-[640px] z-20 mx-auto sm:text-[40px] md:text-[60px] lg:text-[60px] xl:text-[65px] 2xl:max-w-[840px] 2xl:text-[80px]"
         >
-          Femmy siz uchun nimalar qiladi?
+          {t('femmy.title')}
         </h2>
 
         {CARD_DATA.map((item, i) => (

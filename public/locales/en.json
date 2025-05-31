@@ -75,5 +75,13 @@
             "title": "How does Femmy help users?",
             "text": "The app collects health-related information, sends reminders, shares useful articles, and offers personalized advice."
         }
+    },
+    "femmy": {
+        "title": "What does Femmy do for you?",
+        "card1_title": "Menstrual and ovulation tracker",
+        "card2_title": "Useful articles",
+        "card3_title": "Pregnancy mode",
+        "card4_title": "User privacy",
+        "card5_title": "Personal reminders"
     }
 }
