@@ -11,8 +11,10 @@ import Questions from '@/components/questions/Questions';
 import UsingApp from '@/components/usingApp/UsingApp';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import i18n from '@/i18n/i18n'; 
+import i18n from '@/i18n/i18n';
 import { I18nextProvider } from 'react-i18next';
+import Lenis from '@studio-freight/lenis';
+import CursorFollower from '@/components/cursorFollower/CursorFollower';
 
 const Page = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -29,11 +31,11 @@ const Page = () => {
 
     const handleLoad = () => {
       clearInterval(interval);
-      
+
       setProgress(100);
       setTimeout(() => {
         setIsLoading(false);
-      }, 1000); 
+      }, 1000);
     };
 
     // Faqat barcha rasm/style/script yuklangandan keyin
@@ -47,6 +49,20 @@ const Page = () => {
       clearInterval(interval);
       window.removeEventListener('load', handleLoad);
     };
+  }, []);
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
   }, []);
 
   if (isLoading) {
@@ -77,20 +93,23 @@ const Page = () => {
   }
 
   return (
-    <I18nextProvider i18n={i18n}>
-      <Header />
-      <main>
-        <Hero />
-        <BackgroundImage />
-        <Femmy />
-        <CardInfo />
-        <Info />
-        <UsingApp />
-        <Advertisement />
-        <Questions />
-      </main>
-      <Footer />
-    </I18nextProvider>
+    <>
+      <CursorFollower />
+      <I18nextProvider i18n={i18n}>
+        <Header />
+        <main>
+          <Hero />
+          <BackgroundImage />
+          <Femmy />
+          <CardInfo />
+          <Info />
+          <UsingApp />
+          <Advertisement />
+          <Questions />
+        </main>
+        <Footer />
+      </I18nextProvider>
+    </>
   );
 };
 
