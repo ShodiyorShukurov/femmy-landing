@@ -13,7 +13,6 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import i18n from '@/i18n/i18n';
 import { I18nextProvider } from 'react-i18next';
-import Lenis from '@studio-freight/lenis';
 import CursorFollower from '@/components/cursorFollower/CursorFollower';
 
 const Page = () => {
@@ -49,20 +48,6 @@ const Page = () => {
       clearInterval(interval);
       window.removeEventListener('load', handleLoad);
     };
-  }, []);
-
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    });
-
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
   }, []);
 
   if (isLoading) {

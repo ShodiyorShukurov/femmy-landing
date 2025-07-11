@@ -38,7 +38,7 @@ const CursorFollower = () => {
     };
   }, []);
 
-  return <div className="cursor-example z-[9999] pointer-events-none" />;
+  return <div className="hidden lg:block cursor-example z-[9999] pointer-events-none" />;
 };
 
 export default CursorFollower;
